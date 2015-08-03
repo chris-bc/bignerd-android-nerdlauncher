@@ -13,5 +13,5 @@ public class NerdLauncherActivity extends SingleFragmentActivity {
     public Fragment createFragment() {
         return new NerdLauncherFragment();
     }
-    
+
 }
