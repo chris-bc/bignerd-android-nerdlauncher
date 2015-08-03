@@ -1,4 +1,4 @@
-package bennettscash.id.au.nerdlauncher;
+package au.id.bennettscash.nerdlauncher;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
