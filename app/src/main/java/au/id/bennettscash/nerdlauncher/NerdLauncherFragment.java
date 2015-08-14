@@ -1,6 +1,7 @@
 package au.id.bennettscash.nerdlauncher;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -56,5 +58,18 @@ public class NerdLauncherFragment extends android.support.v4.app.ListFragment {
         };
 
         setListAdapter(adapter);
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        ResolveInfo resolveInfo = (ResolveInfo)l.getAdapter().getItem(position);
+        ActivityInfo activityInfo = resolveInfo.activityInfo;
+
+        if (activityInfo == null) return;
+
+        Intent i = new Intent(Intent.ACTION_MAIN);
+        i.setClassName(activityInfo.applicationInfo.packageName, activityInfo.name);
+
+        startActivity(i);
     }
 }
